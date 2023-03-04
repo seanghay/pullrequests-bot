@@ -1,4 +1,4 @@
-# pullrequests-bot
+# Pull Requests Bot
 
 Alert you when there is a pull request is created in your GitHub repo
 
