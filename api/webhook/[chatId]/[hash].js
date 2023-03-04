@@ -49,12 +49,12 @@ export default async function (req, res) {
 
     const { sender, repository, pull_request, action } = req.body;
 
-    if (!['opened', 'closed'].includes(action)) {
+    if (!['reopened', 'opened', 'closed'].includes(action)) {
       res.status(200).json({ msg: 'ignored' });
       return;
     }
 
-    const icon = action === 'opened' ? '🟠' : '✅'
+    const icon = (action === 'opened' || action === 'reopened') ? '🟠' : '✅'
     const md = `${icon} ${sender.login} ${action} a pull request [${pull_request.title}](${pull_request.html_url})` +
       ` in [${repository.name}](${repository.html_url}) into \`${pull_request.base.ref}\` from \`${pull_request.head.ref}\`.\n`;
     const html = marked.parseInline(md);
