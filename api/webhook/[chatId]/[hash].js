@@ -47,7 +47,7 @@ export default async function (req, res) {
       return;
     }
 
-    const { repository, pull_request, action } = req.body;
+    const { sender, repository, pull_request, action } = req.body;
 
     if (!['opened', 'closed'].includes(action)) {
       res.status(200).json({ msg: 'ignored' });
@@ -55,7 +55,7 @@ export default async function (req, res) {
     }
 
     const icon = action === 'opened' ? '🟠' : '✅'
-    const md = `${icon} ${pull_request.user.login} ${action} a pull request [${pull_request.title}](${pull_request.html_url})` +
+    const md = `${icon} ${sender.login} ${action} a pull request [${pull_request.title}](${pull_request.html_url})` +
       ` in [${repository.name}](${repository.html_url}) into \`${pull_request.base.ref}\` from \`${pull_request.head.ref}\`.\n`;
     const html = marked.parseInline(md);
     await bot.telegram.sendMessage(id, html, {
