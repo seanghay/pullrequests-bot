@@ -1,0 +1,15 @@
+{
+  "type": "module",
+  "scripts": {
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "@octokit/webhooks": "^10.7.0",
+    "dotenv": "^16.0.3",
+    "marked": "^4.2.12",
+    "telegraf": "^4.11.2"
+  },
+  "devDependencies": {
+    "vercel": "^28.16.12"
+  }
+}
