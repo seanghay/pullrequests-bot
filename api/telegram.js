@@ -19,7 +19,7 @@ export default async function (req, res) {
   bot.start(async ctx => {
     await ctx.replyWithHTML(markdown([
       `**Welcome to Pull Requests Bot**`,
-      `Here is your private webhook URL liked to your chatroom ID that you can use for your GitHub repo.`,
+      `Here is your private webhook URL linked to your chatroom ID that you can use for your GitHub repo.`,
       `\`${createSignedURL(process.env.TELEGRAM_TOKEN, ctx.message.chat.id)}\``
     ].join('\n')));
   });
